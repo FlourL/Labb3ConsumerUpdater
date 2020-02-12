@@ -1,5 +1,7 @@
 package com.example.consumer;
 
+import org.json.JSONObject;
+
 public class User {
 	int id;
 	String name;
@@ -22,9 +24,13 @@ public class User {
 	public void setProffesion(String proffesion) {
 		this.proffesion = proffesion;
 	}
-	public String toJsonString() {
-		
-		return name;
+	public String toJsonString(boolean includeID) {
+		JSONObject jsonO = new JSONObject();
+		if(includeID) 
+			jsonO.put("id", id);
+		jsonO.put("name", name);
+		jsonO.put("proffesion", proffesion);
+		return jsonO.toString();
 		
 	}
 	
