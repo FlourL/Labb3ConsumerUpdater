@@ -26,13 +26,12 @@ public class MyRequestHandler {
 			con.setRequestProperty("Content-Type", "application/json; utf-8");
 			con.setRequestProperty("Accept", "application/json");
 			String jsonString = user.toJsonString(false);
-			System.out.println(jsonString + " --SENT TO DATABASE");
-			
 			try(OutputStream os = con.getOutputStream()) {
 				OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
 				osw.write(jsonString);
 				osw.flush();
 				osw.close();
+				System.out.println(jsonString + " --SENT TO DATABASE");
 			}
 		
 			System.out.println("Flushed it all");
